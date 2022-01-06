@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>        
+/* Primero pregunta el código y desúes ejecuta */                              
+/* var contador = 0; */            
+/*
+while (contador < 3);   {
+    alert(valor: "+ contador");
+    contador++;
+}
+*/
+
+//do {        /* Primero ejecuta el código y desúes pregunta */
+//    alert("valor: " + contador);
+//    contador++;            /* Contador + 1 */
+//    } while(contador < 3);
+
+    //var sumatoria = 0;
+    //var contador  = 0;
+    //debugger /* Es para ver el código en el browser */
+    //while(contador <=1000) {
+    //   sumatoria += contador;  /* por cada ciclo guardamos en sumatoria el valor de contador */
+    //    contador++;
+    //    alert(sumatoria); /* pone "" sólo cuando sea texto */
+    //}
+
+    /* Alternativa */
+    /*for (var i=0; i< 10; i++) {
+        alert(i +100)
+    } */
+
+    /* determinar si un número es par o no */
+    //alert(10 % 2 ==0)         //% es el resto de la división
+    var sumatoria =0;
+    for (var i = 0; i< 1000; i++) {
+       if (i % 2 == 0){ 
+        sumatoria += i;
+       }
+    }   
+    alert("La sumatoria entre números pares entre 0 y 1000 es:" + sumatoria)
+</script>
+
+</body>
+</html>
