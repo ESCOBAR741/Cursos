@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface UsuarioDao {
 
-    List<Usuario> getUsuario();
+    List<Usuario> getUsuarios();
 }
