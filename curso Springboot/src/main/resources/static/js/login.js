@@ -19,7 +19,7 @@ $(document).ready(function() {
 
    const respuesta = await request.text();
    if (respuesta != 'FAIL') {
-     localStorage.token = respuesta;
+     localStorage.token = respuesta; //Guarta el toquenJWT en el browser del usuario
      localStorage.email = datos.email;
      window.location.href = 'usuarios.html'
    } else {
