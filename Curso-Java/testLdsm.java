@@ -29,7 +29,6 @@ public class App {
 
 promE= AcumE/6;
 promP= AcumP/6;
-
 System.out.println("La suma acumulada de las edades es: " + AcumE);
 System.out.println("El peso acumulado es: " + AcumP);
 System.out.println("El promedio de las edades es " + promE);
