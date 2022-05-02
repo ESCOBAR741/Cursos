@@ -1,3 +1,13 @@
+#len() retorna todo el Array
+# lista.append(elemento)
+#lechuga = ["a","b","c"]
+#lechuga.append("d")
+#print(lechuga) ["a","b","c","d"]
+
+#del lista [indice] delete
+#del lechuga[0]
+#print(lechuga) ["b", "c", "d"]
+
 import random
 
 balas= [1,0,0,0,0]
