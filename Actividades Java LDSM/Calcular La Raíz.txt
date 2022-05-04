@@ -1,0 +1,10 @@
+       Scanner gsh = new Scanner(System.in);
+
+        double num = 0;
+        double resultado =0;
+
+        System.out.println("Ingresa un número :");
+        num = gsh.nextDouble();
+
+        resultado = (double) Math.sqrt(num);
+        System.out.println("La raíz de : "  +num+ "es" +resultado);
