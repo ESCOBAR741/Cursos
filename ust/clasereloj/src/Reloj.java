@@ -1,11 +1,22 @@
 public class Reloj {
 
-    public static void mutadores(String[] args) {
+    private int minutoActual;
+    private int horaActual;
 
+    public int getMinutoActual() {
+        return minutoActual;
     }
 
-    public static void accesadores(String[] args) {
+    public void setMinutoActual(int minutoActual) {
+        this.minutoActual = minutoActual;
+    }
 
+    public int getHoraActual() {
+        return horaActual;
+    }
+
+    public void setHoraActual(int horaActual) {
+        this.horaActual = horaActual;
     }
 
     public static void formatohoraminuto(String[] args) {
