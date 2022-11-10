@@ -24,5 +24,20 @@ public class Prueba {
         if (conect != null) {
             System.out.println("Funciona");
         }
+        String consultaSQL = "SELECT nombre FROM usuario WHERE id = '1'";
+        Statement statementNULL = null;
+        ResultSet resultSetNull = null;
+        if (conect != null) {
+            try {
+                statementNULL = conect.createStatement(); //Crea una conexion
+                resultSetNull = statementNULL.executeQuery(consultaSQL);
+                if (resultSetNull.next()) {
+                    System.out.println(resultSetNull.getString("nombre"));
+                }
+            } catch (Exception e) {
+                
+            }
+        }
+
     }
 }
