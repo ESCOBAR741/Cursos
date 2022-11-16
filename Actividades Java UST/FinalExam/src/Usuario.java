@@ -3,8 +3,7 @@ public class Usuario {
     private String password;
 
     public Usuario() {
-        setUsuario("root");
-        setPassword("1234");
+
     }
 
     public String getUsuario() {
@@ -32,5 +31,4 @@ public class Usuario {
         }
 
     }
-
 }

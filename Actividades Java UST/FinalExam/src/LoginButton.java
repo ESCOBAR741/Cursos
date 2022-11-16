@@ -59,6 +59,7 @@ public class LoginButton extends JFrame implements ActionListener {
 
         }
         if (event.getSource() == newUser) {
+
             new RegistrarUsuario();
         }
 

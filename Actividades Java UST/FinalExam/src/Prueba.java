@@ -2,7 +2,7 @@ import java.sql.*;
 
 public class Prueba {
     private static final String driver  = "com.mysql.cj.jdbc.Driver";
-    private static final String db      = "jdbc:mysql://localhost:3306/usuarios"; //nuestra tabla
+    private static final String db      = "jdbc:mysql://localhost:3306/ordenes"; //nuestra tabla
     //Datos xampp
     private static final String usuario = "root";
     private static final String clave   = "";
