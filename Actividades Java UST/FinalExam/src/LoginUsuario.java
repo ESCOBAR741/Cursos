@@ -1,9 +1,8 @@
-public class Usuario {
+public class LoginUsuario {
     private String usuario;
     private String password;
 
-    public Usuario() {
-
+    public LoginUsuario() {
     }
 
     public String getUsuario() {
@@ -22,11 +21,14 @@ public class Usuario {
         this.password = password;
     }
 
-    public int CrearUsuario(String usuario, String password) {
+
+    public int ValidarUsuario(String usuario, String password) {
         System.out.println(password);
         if (getPassword().equals(password) && getUsuario().equals(usuario)) {
+            System.out.println("11");
             return 1;
         } else {
+            System.out.println("00");
             return 0;
         }
 

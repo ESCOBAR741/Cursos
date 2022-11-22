@@ -5,51 +5,51 @@ import java.awt.event.ActionListener;
 public class LoginButton extends JFrame implements ActionListener {
     JTextField usuario;
     JPasswordField password;
-    JButton save = new JButton("Guardar");
+    JButton logearse = new JButton("Iniciar Sesion");
 
     JButton newUser = new JButton("Crear cuenta");
 
     public LoginButton() {
-        JFrame example = new JFrame("Ejemplo");
+        JFrame logIn = new JFrame("Login");
         //JFrame NewUSer = new JFrame("Test");
 
         JLabel textUsuario = new JLabel("Usuario: ");
         textUsuario.setBounds(10, 20, 80, 30);
-        example.add(textUsuario);
+        logIn.add(textUsuario);
 
         usuario = new JTextField();
         usuario.setBounds(70, 20, 200, 30);
-        example.add(usuario);
+        logIn.add(usuario);
 
         JLabel textPassword = new JLabel("Password");
         textPassword.setBounds(10, 60, 80, 30);
-        example.add(textPassword);
+        logIn.add(textPassword);
 
         password = new JPasswordField();
         password.setBounds(70, 60, 200, 30);
-        example.add(password);
+        logIn.add(password);
 
         newUser.setBounds(135, 140, 115, 25);
-        example.add(newUser);
+        logIn.add(newUser);
         newUser.addActionListener(this);
 
-        save.setBounds(150, 100, 85, 20);
-        example.add(save);
-        save.addActionListener(this);
-        example.setSize(380, 300);
-        example.setLayout(null);
-        example.setLocation(600, 300);
-        example.setVisible(true);
+        logearse.setBounds(135, 100, 120, 20);
+        logIn.add(logearse);
+        logearse.addActionListener(this);
+        logIn.setSize(380, 300);
+        logIn.setLayout(null);
+        logIn.setLocation(600, 300);
+        logIn.setVisible(true);
 
     }
 
     public void actionPerformed(ActionEvent event) {
-        if (event.getSource() == save) {
+        if (event.getSource() == logearse) {
             String datosUsuario = usuario.getText();
             char [] datosPassword = password.getPassword();
             String password = new String(datosPassword);
             System.out.println(password);
-            Usuario getUsuario = new Usuario();
+            LoginUsuario getUsuario = new LoginUsuario();
             System.out.println(getUsuario.ValidarUsuario(datosUsuario,password));
             if (getUsuario.ValidarUsuario(datosUsuario,password) == 1) {
                 JOptionPane.showMessageDialog(null, "Ok");
@@ -60,7 +60,7 @@ public class LoginButton extends JFrame implements ActionListener {
         }
         if (event.getSource() == newUser) {
 
-            new RegistrarUsuario();
+           new UsuarioRegistrar();
         }
 
     }
