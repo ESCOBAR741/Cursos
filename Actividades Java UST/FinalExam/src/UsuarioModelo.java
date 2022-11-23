@@ -51,7 +51,7 @@ public class UsuarioModelo {
 
     public static void main(String[] args) {
         Usuario UsuarioClase = new Usuario();
-        UsuarioClase.setUsuario("user0");
+        UsuarioClase.setUsuario("user1");
         UsuarioClase.setPassword("1234");
         UsuarioModelo ClaseModeloUsaruio = new UsuarioModelo();
         try {

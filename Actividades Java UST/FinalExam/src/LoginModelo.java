@@ -1,6 +1,5 @@
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.Arrays;
 
 public class LoginModelo {
     private String usuario;
@@ -23,22 +22,40 @@ public class LoginModelo {
 
     private String password;
 
-    public void Validar(LoginModelo usuario)throws Exception {
+    public String[] Validar(String usuario)throws Exception {
         System.out.println(usuario);
         Connection Connector = null;
         PreparedStatement preparedStatementEjecutarSQL = null;
         String sql = null;
+
+
+
         try {
             Connector = Prueba.conexion();
             Connector.setAutoCommit(false);
-            sql = "SELECT usuario, password FROM usuarios WHERE usuario = ?";
-            preparedStatementEjecutarSQL = Connector.prepareStatement(sql);
+            sql = "SELECT usuario, password FROM usuarios WHERE usuario = '"+usuario+"'";
+            /*preparedStatementEjecutarSQL = Connector.prepareStatement(sql);
             preparedStatementEjecutarSQL.setString(1, usuario.getUsuario());
             preparedStatementEjecutarSQL.setString(2, usuario.getPassword());
-            preparedStatementEjecutarSQL.executeUpdate();
+            preparedStatementEjecutarSQL.executeUpdate();*/
+
+            ResultSet resultSetValidar = null;
+            Statement statementSetNull = null;
+            statementSetNull = Connector.createStatement();
+            resultSetValidar = statementSetNull.executeQuery(sql);
+
+            if (resultSetValidar.next()) {
+
+                String usuarioValidarLogin = resultSetValidar.getString("usuario");
+                String passwordValidarLogin = resultSetValidar.getString("password");
+                System.out.println("Deberia de estar funcionando");
+                        String [] resultadoValidarDb = new String[]{usuarioValidarLogin, passwordValidarLogin};
+                return resultadoValidarDb;
+
+            }
+
             Connector.commit();
             preparedStatementEjecutarSQL.close();
-
 
         } catch (Exception e) {
             try {
@@ -47,15 +64,17 @@ public class LoginModelo {
                 throw e;
             }
         }
+        return new String[]{};
     }
 
     public static void main(String[] args) {
         LoginModelo LoginClase = new LoginModelo();
-        /* LoginClase.setUsuario("Arturo");
-        LoginClase.setPassword("1234"); */
+
         LoginModelo ClaseModeloLogin = new LoginModelo();
         try {
-            ClaseModeloLogin.Validar(LoginClase);
+            System.out.println("funciona");
+            String [] arrayPrueba = LoginClase.Validar("admin");
+            System.out.println(Arrays.toString(arrayPrueba));
         } catch (Exception e) {
 
         }
