@@ -2,9 +2,40 @@ public class LoginUsuario {
     private String usuario;
     private String password;
 
-    LoginModelo ConexionPrueba = new LoginModelo();
+    LoginModelo ClaseLoginModelo = new LoginModelo();
     public LoginUsuario() {
     }
+
+    public int ValidarUsuario(String usuario, String password) {
+        System.out.println(usuario);
+        System.out.println(password);
+        try {
+            String [] datos = ClaseLoginModelo.Validar(usuario);
+            System.out.println("Flag1");
+            if (usuario.equals(datos[0]) && password().equals(datos[1])) {
+                System.out.println("Flag2");
+                return 1;
+            } else {
+                System.out.println("Flag3");
+                System.out.println("No funciona");
+                return 0;
+            }
+        }catch (Exception e) {
+            System.out.println("Exepcion del catch");
+        }
+        return 0;
+
+    }
+
+    private String usuario() {
+        return null;
+    }
+
+    private Object password() {
+        return null;
+    }
+
+
 
     public String getUsuario() {
         return usuario;
@@ -26,7 +57,7 @@ public class LoginUsuario {
     public int ValidarUsuario() {
         System.out.println(password);
         try {
-            String [] datos = ConexionPrueba.Validar(getUsuario());
+            String [] datos = ClaseLoginModelo.Validar(getUsuario());
             if (getUsuario().equals(datos[0]) && getPassword().equals(datos[1])) {
                 return 1;
             } else {
@@ -46,4 +77,6 @@ public class LoginUsuario {
 
         return 0;
     }
+
+
 }

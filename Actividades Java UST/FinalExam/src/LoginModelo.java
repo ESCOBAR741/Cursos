@@ -2,30 +2,11 @@ import java.sql.*;
 import java.util.Arrays;
 
 public class LoginModelo {
-    private String usuario;
-
-    public String getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(String Usuario) {
-        this.usuario = usuario;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    private String password;
 
     public String[] Validar(String usuario)throws Exception {
         System.out.println(usuario);
         Connection Connector = null;
-        PreparedStatement preparedStatementEjecutarSQL = null;
+        //PreparedStatement preparedStatementEjecutarSQL = null;
         String sql = null;
 
 
@@ -50,12 +31,13 @@ public class LoginModelo {
                 String passwordValidarLogin = resultSetValidar.getString("password");
                 System.out.println("Deberia de estar funcionando");
                         String [] resultadoValidarDb = new String[]{usuarioValidarLogin, passwordValidarLogin};
+                System.out.println("Resultado Validar " +Arrays.toString(resultadoValidarDb));
                 return resultadoValidarDb;
 
             }
 
-            Connector.commit();
-            preparedStatementEjecutarSQL.close();
+            //Connector.commit();
+            //preparedStatementEjecutarSQL.close();
 
         } catch (Exception e) {
             try {
@@ -72,11 +54,15 @@ public class LoginModelo {
 
         LoginModelo ClaseModeloLogin = new LoginModelo();
         try {
-            System.out.println("funciona");
             String [] arrayPrueba = LoginClase.Validar("admin");
             System.out.println(Arrays.toString(arrayPrueba));
+            LoginUsuario ClaseLoginUsuario = new LoginUsuario();
+            ClaseLoginUsuario(arrayPrueba);
         } catch (Exception e) {
 
         }
+    }
+
+    private static void ClaseLoginUsuario(String[] arrayPrueba) {
     }
 }
