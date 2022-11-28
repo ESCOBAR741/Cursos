@@ -1,24 +1,17 @@
+import javax.swing.*;
 import java.sql.*;
 import java.util.Arrays;
 
 public class LoginModelo {
 
     public String[] Validar(String usuario)throws Exception {
-        System.out.println(usuario);
         Connection Connector = null;
-        //PreparedStatement preparedStatementEjecutarSQL = null;
         String sql = null;
-
-
 
         try {
             Connector = Prueba.conexion();
             Connector.setAutoCommit(false);
             sql = "SELECT usuario, password FROM usuarios WHERE usuario = '"+usuario+"'";
-            /*preparedStatementEjecutarSQL = Connector.prepareStatement(sql);
-            preparedStatementEjecutarSQL.setString(1, usuario.getUsuario());
-            preparedStatementEjecutarSQL.setString(2, usuario.getPassword());
-            preparedStatementEjecutarSQL.executeUpdate();*/
 
             ResultSet resultSetValidar = null;
             Statement statementSetNull = null;
@@ -29,15 +22,14 @@ public class LoginModelo {
 
                 String usuarioValidarLogin = resultSetValidar.getString("usuario");
                 String passwordValidarLogin = resultSetValidar.getString("password");
-                System.out.println("Deberia de estar funcionando");
                         String [] resultadoValidarDb = new String[]{usuarioValidarLogin, passwordValidarLogin};
                 System.out.println("Resultado Validar " +Arrays.toString(resultadoValidarDb));
+
+                LoginUsuario ClaseLoginUsuarioResultado = new LoginUsuario();
+                ClaseLoginUsuarioResultado(resultadoValidarDb, usuarioValidarLogin, passwordValidarLogin);
                 return resultadoValidarDb;
 
             }
-
-            //Connector.commit();
-            //preparedStatementEjecutarSQL.close();
 
         } catch (Exception e) {
             try {
@@ -49,20 +41,18 @@ public class LoginModelo {
         return new String[]{};
     }
 
-    public static void main(String[] args) {
-        LoginModelo LoginClase = new LoginModelo();
 
-        LoginModelo ClaseModeloLogin = new LoginModelo();
-        try {
-            String [] arrayPrueba = LoginClase.Validar("admin");
-            System.out.println(Arrays.toString(arrayPrueba));
-            LoginUsuario ClaseLoginUsuario = new LoginUsuario();
-            ClaseLoginUsuario(arrayPrueba);
-        } catch (Exception e) {
+    private int ClaseLoginUsuarioResultado(String[] resultadoValidarDb, String usuarioValidarLogin, String passwordValidarLogin) {
+        if (usuarioValidarLogin.equals(resultadoValidarDb[0]) && passwordValidarLogin.equals(resultadoValidarDb[1])) {
+                JOptionPane.showMessageDialog(null, "Ok");
+
+            return 1;
+            } else {
+                JOptionPane.showMessageDialog(null,"User or/and password are wrong");
+                return 0;
+            }
 
         }
-    }
 
-    private static void ClaseLoginUsuario(String[] arrayPrueba) {
-    }
+
 }

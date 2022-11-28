@@ -51,12 +51,6 @@ public class LoginButton extends JFrame implements ActionListener {
             String usuario = datosUsuario;
             LoginUsuario ClaseLoginUsuario = new LoginUsuario();
             ClaseLoginUsuario.ValidarUsuario(usuario,password);
-           /* System.out.println(getUsuario.ValidarUsuario(datosUsuario,password));
-            if (getUsuario.ValidarUsuario(datosUsuario,password) == 1) {
-                JOptionPane.showMessageDialog(null, "Ok");
-            } else {
-                JOptionPane.showMessageDialog(null,"User or/and password are wrong");
-            } */
 
         }
         if (event.getSource() == newUser) {
