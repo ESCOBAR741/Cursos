@@ -1,61 +1,75 @@
-import java.awt.*;
-import javax.swing.*;
-import java.awt.event.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JPopupMenu;
+import javax.swing.JToggleButton;
+import javax.swing.SwingUtilities;
+import javax.swing.UIManager;
+import javax.swing.UIManager.LookAndFeelInfo;
 
+public class Menu extends JFrame{
 
-public class Menu extends JFrame implements ActionListener{
-
-
-    static JMenuBar mb;
-
-    // JMenu
-    static JMenu x;
-
-    // Menu items
-    static JMenuItem m1, m2, m3;
-
-    // create a frame
-    static JFrame f;
-
-    public static void main()
-    {
-
-        // create a frame
-        f = new JFrame("Menu demo");
-
-        // create a menubar
-        mb = new JMenuBar();
-
-        // create a menu
-        x = new JMenu("Menu");
-
-        // create menuitems
-        m1 = new JMenuItem("MenuItem1");
-        m2 = new JMenuItem("MenuItem2");
-        m3 = new JMenuItem("MenuItem3");
-
-        // add menu items to menu
-        x.add(m1);
-        x.add(m2);
-        x.add(m3);
-
-        // add menu to menu bar
-        mb.add(x);
-
-        // add menubar to frame
-        f.setJMenuBar(mb);
-
-        // set the size of the frame
-        f.setSize(500, 500);
-        f.setVisible(true);
-    }
+    JPopupMenu popupMenu;
 
     public static void main(String[] args) {
-        new Menu();
+        SwingUtilities.invokeLater(new Runnable() {
+
+            @Override
+            public void run() {
+
+                for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
+                    if ("Nimbus".equals(info.getName())) {
+                        try {
+                            UIManager.setLookAndFeel(info.getClassName());
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                        break;
+                    }
+                }
+
+                Menu frame = new Menu ();
+
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setLocationRelativeTo(null);
+                frame.setSize(400, 400);
+                frame.setVisible(true);
+            }
+        });
+
     }
 
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        
+    public Menu() {
+
+        popupMenu = new JPopupMenu();
+
+        popupMenu.add(createMenu("Displayed Items"));
+        this.addMouseListener(new MouseAdapter() {
+            public void mouseReleased(MouseEvent Me) {
+                if (Me.isPopupTrigger()) {
+                    popupMenu.show(Me.getComponent(), Me.getX(), Me.getY());
+                }
+            }
+        });
+
+    }
+
+    private String createMenu(String displayed_items) {
+        return displayed_items;
+    }
+
+
+    public static class JCheckBoxMenu extends JMenu {
+
+
+        public JCheckBoxMenu(String text, boolean selected) {
+            super(text);
+            setModel(new JToggleButton.ToggleButtonModel());
+            setSelected(selected);
+            setFocusable(false);
+
+        }
     }
 }
