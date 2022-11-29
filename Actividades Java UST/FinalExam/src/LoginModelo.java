@@ -45,6 +45,8 @@ public class LoginModelo {
     private int ClaseLoginUsuarioResultado(String[] resultadoValidarDb, String usuarioValidarLogin, String passwordValidarLogin) {
         if (usuarioValidarLogin.equals(resultadoValidarDb[0]) && passwordValidarLogin.equals(resultadoValidarDb[1])) {
                 JOptionPane.showMessageDialog(null, "Ok");
+                Menu ClaseMenu = new Menu();
+            System.out.println("Nada");
 
             return 1;
             } else {

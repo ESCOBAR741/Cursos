@@ -6,7 +6,8 @@ public class UsuarioRegistrar extends JFrame implements ActionListener {
     JTextField newUsuario;
     JPasswordField newPassword;
     JPasswordField newRepeatPassword;
-    JButton SaveNewUser = new JButton("Guardar");
+    JButton SaveNewUser = new JButton("Save");
+    JButton returnLogin = new JButton("Back");
 
 
     public UsuarioRegistrar() {
@@ -36,9 +37,14 @@ public class UsuarioRegistrar extends JFrame implements ActionListener {
         newRepeatPassword.setBounds(120,100,200,30);
         example.add(newRepeatPassword);
 
-        SaveNewUser.setBounds(135, 180, 120, 30);
+        SaveNewUser.setBounds(195, 180, 120, 30);
         example.add(SaveNewUser);
         SaveNewUser.addActionListener(this);
+
+        returnLogin.setBounds(30,180,120,30);
+        example.add(returnLogin);
+        returnLogin.addActionListener(this);
+
         example.setSize(380, 300);
         example.setLayout(null);
         example.setLocation(600, 300);
@@ -57,6 +63,11 @@ public class UsuarioRegistrar extends JFrame implements ActionListener {
 
             Usuario ClaseUsuario = new Usuario();
             ClaseUsuario.CrearUsuario(usuario,password,repeatPassword);
+
+        }
+
+        if (evento.getSource() == returnLogin) {
+            new LoginButton();
 
         }
     }

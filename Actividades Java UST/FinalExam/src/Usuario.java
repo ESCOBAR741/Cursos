@@ -27,9 +27,9 @@ public class Usuario {
     public int CrearUsuario(String usuario, String password, String repeatPassword) {
         System.out.println(usuario);
         System.out.println(password);
-        System.out.println(repeatPassword);
+        //System.out.println(repeatPassword);
         if (password.equals(repeatPassword) ) {
-            System.out.println("Iguales");
+            System.out.println("Great");
             JOptionPane.showMessageDialog(null, "Successfully Created");
             UsuarioModelo ClaseUsuarioModelo = new UsuarioModelo();
             ClaseUsuarioModelo.Insertar(usuario, password);
