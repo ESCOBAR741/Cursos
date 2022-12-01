@@ -1,75 +1,50 @@
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import javax.swing.JCheckBoxMenuItem;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JPopupMenu;
-import javax.swing.JToggleButton;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
+import javax.swing.*;
 import javax.swing.UIManager.LookAndFeelInfo;
 
 public class Menu extends JFrame{
+    JMenuBar menu;
+    JFrame MenuPrincipal;
 
-    JPopupMenu popupMenu;
+    JMenu cliente,producto;
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new Runnable() {
-
-            @Override
-            public void run() {
-
-                for (LookAndFeelInfo info : UIManager.getInstalledLookAndFeels()) {
-                    if ("Nimbus".equals(info.getName())) {
-                        try {
-                            UIManager.setLookAndFeel(info.getClassName());
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
-                        break;
-                    }
-                }
-
-                Menu frame = new Menu ();
-
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setLocationRelativeTo(null);
-                frame.setSize(400, 400);
-                frame.setVisible(true);
-            }
-        });
-
-    }
-
+    JMenuItem nuevoCliente, listaCliente, nuevoProduto, listaProducto;
+/*
     public Menu() {
+        MenuPrincipal = new JFrame("Menu");
+        menu = new JMenuBar();
+        cliente = new JMenu("Cliente");
+        producto = new JMenu("Producto");
 
-        popupMenu = new JPopupMenu();
+        nuevoCliente  = new JMenuItem("Nuevo cliente");
+        listaCliente  = new JMenuItem("Lista Cliente");
+        nuevoProduto  = new JMenuItem("Nuevo Producto");
+        listaProducto = new JMenuItem("Lista Producto");
 
-        popupMenu.add(createMenu("Displayed Items"));
-        this.addMouseListener(new MouseAdapter() {
-            public void mouseReleased(MouseEvent Me) {
-                if (Me.isPopupTrigger()) {
-                    popupMenu.show(Me.getComponent(), Me.getX(), Me.getY());
-                }
-            }
-        });
+        MenuPrincipal.add(menu);
+        menu.add(cliente);
+        cliente.add(nuevoCliente);
+        nuevoCliente.addActionListener(this);
+        cliente.add(nuevoCliente);
+        listaCliente.addActionListener(this);
+
+        MenuPrincipal.add(menu);
+        menu.add(cliente);
+        cliente.add(nuevoCliente);
+        nuevoCliente.addActionListener(this);
+        listaCliente.addActionListener(this);
+
+        MenuPrincipal.setJMenuBar(menu);
+        MenuPrincipal.setLayout(null);
+        MenuPrincipal.setSize(800,900);
+        MenuPrincipal.setResizable(false);
+        MenuPrincipal.setLocation(null);
+        MenuPrincipal.setVisible(false);
+
+//MenuPrincipal.addWindowListe
 
     }
+*/
 
-    private String createMenu(String displayed_items) {
-        return displayed_items;
-    }
-
-
-    public static class JCheckBoxMenu extends JMenu {
-
-
-        public JCheckBoxMenu(String text, boolean selected) {
-            super(text);
-            setModel(new JToggleButton.ToggleButtonModel());
-            setSelected(selected);
-            setFocusable(false);
-
-        }
-    }
 }
