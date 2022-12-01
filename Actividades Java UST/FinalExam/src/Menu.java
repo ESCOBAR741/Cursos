@@ -42,7 +42,7 @@ public class Menu extends JFrame{
         MenuPrincipal.setLocation(null);
         MenuPrincipal.setVisible(false);
 
-//MenuPrincipal.addWindowListe
+//MenuPrincipal.addWindowList
 
     }
 */
