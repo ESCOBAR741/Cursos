@@ -9,33 +9,44 @@ namespace CustomersApi.Controllers
     public class CustomerController : Controller
     {
         [HttpGet]
-        public async Task<List<CustomerDto>> GetCustomers()
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CustomerDto))]
+        public async Task<IActionResult> GetCustomers()
         {
             throw new NotImplementedException();
         }
 
 
         [HttpGet("{id}")]
-        public async Task<CustomerDto> GetCustomer(long id)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CustomerDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> GetCustomer(long id)
         {
-            throw new NotImplementedException();
 
-         }
+            var vacio = new CustomerDto();
+
+            return new ObjectResult(vacio);
+        }
 
         [HttpDelete("{id}")]
-        public async Task<bool> DeleteCustomer(long id)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(bool))]
+        public async Task<IActionResult> DeleteCustomer(long id)
         {
             throw new NotImplementedException();
         }
 
         [HttpPost]
-        public async Task<CustomerDto> CreateCustomer(CreateCustomerDto customer)
+        [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(CustomerDto))]
+        public async Task<IActionResult> CreateCustomer(CreateCustomerDto customer)
         {
-            throw new NotImplementedException();
+            var vacio = new CustomerDto();
+
+            return new CreatedResult($"https://localhost:7142/api/customer/{vacio.Id}", null);
         }
 
         [HttpPut]
-        public async Task<CustomerDto> UpdateCustomerDto(CustomerDto customer)
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(CustomerDto))]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> UpdateCustomerDto(CustomerDto customer)
         { 
             throw new NotImplementedException();
         }
