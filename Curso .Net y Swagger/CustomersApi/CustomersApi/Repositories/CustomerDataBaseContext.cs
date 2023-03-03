@@ -1,19 +1,39 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CustomersApi.Dtos;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 
 namespace CustomersApi.Repositories
 {
     public class CustomerDataBaseContext : DbContext
     {
+        public CustomerDataBaseContext(DbContextOptions<CustomerDataBaseContext> options) : base(options)
+        {
+        
+        }
+
         public DbSet<CustomerEntity> Customer { get; set; }
+
 
         public async Task<CustomerEntity> Get(long id)
         {
             return await Customer.FirstAsync(x => x.Id == id);
         }
-        public async Task<CustomerEntity> Add(CustomerEntity entity)
-        {
 
+        public async Task<CustomerEntity> Add(CreateCustomerDto customerDto)
+        {
+            CustomerEntity entity = new CustomerEntity()
+            {
+                Id = null,
+                Address = customerDto.Address,
+                Email = customerDto.Email,
+                FirstName = customerDto.FistName,
+                LastName = customerDto.LastName,
+            };
+
+            EntityEntry<CustomerEntity> response = await Customer.AddAsync(entity);
+            await SaveChangesAsync();
+            return await Get(response.Entity.Id ?? throw new Exception("No se pudo guardar"));
         }
     }
 

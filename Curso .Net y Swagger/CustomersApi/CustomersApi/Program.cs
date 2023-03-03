@@ -1,3 +1,6 @@
+using CustomersApi.Repositories;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -7,6 +10,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddRouting(routing => routing.LowercaseUrls = true);
+
+builder.Services.AddDbContext<CustomerDataBaseContext>(builder =>
+{
+    builder.UseMySQL("Server=localhost;Port=3306;Database=customerdatabase;Uid=root;pwd=test"); //check that
+});
 
 var app = builder.Build();
 
