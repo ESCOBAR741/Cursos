@@ -13,7 +13,7 @@ builder.Services.AddRouting(routing => routing.LowercaseUrls = true);
 
 builder.Services.AddDbContext<CustomerDataBaseContext>(builder =>
 {
-    builder.UseMySQL("Server=localhost;Port=3306;Database=customerdatabase;Uid=root;pwd=test"); //check that
+    builder.UseMySQL("Server=localhost;Port=3306;Database=customerdatabase;Uid=root"); //check that
 });
 
 var app = builder.Build();
